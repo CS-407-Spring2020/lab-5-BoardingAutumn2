@@ -60,6 +60,8 @@ public class Main2Activity extends AppCompatActivity {
                 return true;
             case R.id.addnote:
                 //fill in later
+                Intent intent1 = new Intent(this, ThirdActivity.class);
+                startActivity(intent1);
                 return true;
 
             default: return super.onOptionsItemSelected(item);

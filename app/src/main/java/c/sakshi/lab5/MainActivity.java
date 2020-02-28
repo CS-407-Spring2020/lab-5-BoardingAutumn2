@@ -30,6 +30,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        String usernameKey = "username";
+
+        SharedPreferences sharedPreferences = getSharedPreferences("c.sakshi.lab5", Context.MODE_PRIVATE);
+
+        //check sharedPreferences for preexisting stored username, go to second activity if so
+        if(!sharedPreferences.getString(usernameKey, "").equals("")) {
+            String str = sharedPreferences.getString("username", "");
+
+            Intent intent = new Intent(this, Main2Activity.class);
+            intent.putExtra("name", str);
+            startActivity(intent);
+        }
+        else {
+            setContentView(R.layout.activity_main);
+        }
     }
 }

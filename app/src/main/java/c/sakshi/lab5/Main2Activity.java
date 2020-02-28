@@ -19,6 +19,8 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        //TODO i am right before step 4
+
         textView2 = (TextView) findViewById(R.id.welcome);
         Intent intent = getIntent();
         String str = intent.getStringExtra("name");

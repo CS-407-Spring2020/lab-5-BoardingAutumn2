@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("c.sakshi.lab5", Context.MODE_PRIVATE);
 
         //check sharedPreferences for preexisting stored username, go to second activity if so
+        //if usernameKey is notNull
         if(!sharedPreferences.getString(usernameKey, "").equals("")) {
             String str = sharedPreferences.getString("username", "");
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("name", str);
             startActivity(intent);
         }
+        //usernameKey is null
         else {
             setContentView(R.layout.activity_main);
         }

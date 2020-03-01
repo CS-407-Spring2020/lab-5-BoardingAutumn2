@@ -7,6 +7,8 @@ import android.view.View;
 
 public class ThirdActivity extends AppCompatActivity {
 
+    int noteid = -1;
+
     public void clickFunction (View view) {
 
     }

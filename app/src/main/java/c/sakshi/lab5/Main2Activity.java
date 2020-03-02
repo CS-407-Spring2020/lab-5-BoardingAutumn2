@@ -37,14 +37,15 @@ public class Main2Activity extends AppCompatActivity {
         String usernameKey = "username";
 
         //check sharedPreferences for preexisting stored username, go to second activity if so
+        String str;
         if(!sharedPreferences.getString(usernameKey, "").equals("")) {
-            String str = sharedPreferences.getString("username", "");
+            str = sharedPreferences.getString("username", "");
             textView2.setText("Welcome " + str + "!");
         }
         else {
             textView2 = (TextView) findViewById(R.id.welcome);
             Intent intent = getIntent();
-            String str = intent.getStringExtra("name");
+            str = intent.getStringExtra("name");
             textView2.setText("Welcome " + str + "!");
         }
 
@@ -53,7 +54,9 @@ public class Main2Activity extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase =
                 context.openOrCreateDatabase("notes", Context.MODE_PRIVATE, null);
 
-        //TODO 3
+        //3
+        DBHelper dbHelper = new DBHelper(sqLiteDatabase);
+        notes = dbHelper.readNotes(str);
 
 
         //4
@@ -71,7 +74,7 @@ public class Main2Activity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), NoteActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Note.class);
                 intent.putExtra("noteid", position);
                 startActivity(intent);
             }
@@ -100,6 +103,7 @@ public class Main2Activity extends AppCompatActivity {
             case R.id.addnote:
                 //fill in later
                 Intent intent1 = new Intent(this, ThirdActivity.class);
+                intent1.putExtra("noteid", notes.size() + 1);
                 startActivity(intent1);
                 return true;
 

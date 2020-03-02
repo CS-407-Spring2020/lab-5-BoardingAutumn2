@@ -37,13 +37,14 @@ public class Main2Activity extends AppCompatActivity {
         String usernameKey = "username";
 
         //check sharedPreferences for preexisting stored username, go to second activity if so
+        textView2 = (TextView) findViewById(R.id.welcome);
         String str;
         if(!sharedPreferences.getString(usernameKey, "").equals("")) {
             str = sharedPreferences.getString("username", "");
             textView2.setText("Welcome " + str + "!");
         }
         else {
-            textView2 = (TextView) findViewById(R.id.welcome);
+
             Intent intent = getIntent();
             str = intent.getStringExtra("name");
             textView2.setText("Welcome " + str + "!");
@@ -74,7 +75,7 @@ public class Main2Activity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), Note.class);
+                Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
                 intent.putExtra("noteid", position);
                 startActivity(intent);
             }
@@ -102,11 +103,10 @@ public class Main2Activity extends AppCompatActivity {
                 return true;
             case R.id.addnote:
                 //fill in later
-                Intent intent1 = new Intent(this, ThirdActivity.class);
-                intent1.putExtra("noteid", notes.size() + 1);
-                startActivity(intent1);
+                Intent intent100 = new Intent(this, ThirdActivity.class);
+                //intent100.putExtra("noteid", notes.size() + 1);
+                startActivity(intent100);
                 return true;
-
             default: return super.onOptionsItemSelected(item);
         }
     }

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         //2: Add username to SharedPreferences Object
         SharedPreferences sharedPreferences = getSharedPreferences("c.sakshi.lab5", Context.MODE_PRIVATE);
-        sharedPreferences.edit().putString("username", str);
+        sharedPreferences.edit().putString("username", str).apply();
 
         //3: start second activity
         Intent intent = new Intent(this, Main2Activity.class);
